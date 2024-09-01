@@ -1,36 +1,39 @@
 import java.util.HashMap;
 
 public class Purse {
-    private HashMap<String, Integer> Purselist;
+    private HashMap<Denomination, Integer> purseList;
     public Purse() {
-        Purselist = new HashMap<>();
+        purseList = new HashMap<>();
     }
-    public void add(String name, int count) {
-        Purselist.put(name, count);
+    public void add(Denomination name, int count) {
+        if (purseList.containsKey(name)) {
+            purseList.put(name, purseList.get(name) + count);
+        } else {
+            purseList.put(name, count);
+        }
     }
-    public void reomove(String name, int count) {
-        if (Purselist.containsKey(name)) {
-            int current = Purselist.get(name);
-            if (current - count > 0) {
-                Purselist.put(name, current - count);
+    public void remove(Denomination name, int count) {
+        if (purseList.containsKey(name)) {
+            if (purseList.get(name) >= count) {
+                purseList.put(name, purseList.get(name) - count);
             } else {
-                Purselist.remove(name);
+                purseList.remove(name);
             }
         }
     }
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (String key : Purselist.keySet()) {
-            sb.append(key + " : " + Purselist.get(key) + "\n");
-        }
-        return sb.toString();
+        String result = "";
+       for(Denomination key : purseList.keySet()) {
+           result = (result+ "\n" + key + " " + purseList.get(key));
+       }
+       return result;
     }
     
     public double getValue() {
-        double total = 0.0;
-        for (String key : Purselist.keySet()) {
-            total += Double.parseDouble(key) * Purselist.get(key);
+        double total = 0;
+        for(Denomination key : purseList.keySet()) {
+            total += key.amt() * purseList.get(key);
         }
-        return total;
+       return total;
     }
 }
