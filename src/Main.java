@@ -1,5 +1,10 @@
+import java.util.Scanner;
+
+
 public class Main {
     public static void main(String[] args) {
+        // Create Scanner
+        Scanner scanner = new Scanner(System.in);
         // Creat Register
         Register register = new Register();
 
@@ -8,6 +13,12 @@ public class Main {
         // Display Purse contents to terminal
         purse.getValue();
         System.out.println(purse.toString());
+
+        //purse.test1();
+
+        scanner.nextLine();
+        scanner.close();
+
 
     }
 }

@@ -1,5 +1,6 @@
+//please work
 public class Register {
-    public Purse makeChange(double amt){
+    public Purse makeChange(double amt) {
         double total = amt;
         Denomination[] denoms = {
             new Denomination(100.0, "One Hundred", "One Hundred Dollars", "100.jpg"),
@@ -13,14 +14,13 @@ public class Register {
             new Denomination(0.05, "Five", "Five Cents", "5.jpg"),
             new Denomination(0.01, "One", "One Cent", "1.jpg")
         };
-        Purse temp= new Purse();
-        for (int i = 0; total < denoms[i].amt() && total != 0; i++){
-            while (total >= denoms[i].amt()){
+        Purse temp = new Purse();
+        for (int i = 0; i < denoms.length && total > 0; i++) {
+            while (total >= denoms[i].amt()) {
                 temp.add(denoms[i], 1);
                 total -= denoms[i].amt();
             }
         }
-
         return temp;
     }
 }
