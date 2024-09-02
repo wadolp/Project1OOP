@@ -2,12 +2,12 @@ import java.util.HashMap;
 
 public class Purse {
     private HashMap<Denomination, Integer> purseList;
-    private double total;
+    private int totalCents;
 
     // Default constructor
     public Purse() {
         purseList = new HashMap<>();
-        total = 0.0;
+        totalCents = 0;
     }
 
     // Adds Denomination and amount to HashMap
@@ -17,7 +17,7 @@ public class Purse {
         } else {
             purseList.put(name, count);
         }
-        total += (name.amt() * count);
+        totalCents += (int) (name.amt() * 100) * count;
     }
 
     // Removes Denomination amount or entire Denomination
@@ -26,10 +26,10 @@ public class Purse {
             int currentCount = purseList.get(name);
             if (currentCount > count) {
                 purseList.put(name, currentCount - count);
-                total -= (name.amt() * count);
+                totalCents -= (int) (name.amt() * 100) * count;
             } else {
                 purseList.remove(name);
-                total -= (name.amt() * currentCount);
+                totalCents -= (int) (name.amt() * 100) * currentCount;
             }
         }
     }
@@ -46,14 +46,14 @@ public class Purse {
 
     // Returns the total value of the purse
     public double getValue() {
-        return total;
+        return totalCents / 100.0;
     }
 
     // Test method
     public int test1() {
         System.out.println("test1");
         System.out.println(purseList.toString());
-        System.out.println("\n\n\nEnd of Test 1\n");
+        System.out.println("\n\n\nEnd of Test amount in cents:" + totalCents + "1\n");
         return 1;
     }
 }

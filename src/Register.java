@@ -1,24 +1,24 @@
-//please work
 public class Register {
     public Purse makeChange(double amt) {
         double total = amt;
+        int totalCents = (int) (total * 100);
         Denomination[] denoms = {
-            new Denomination(100.0, "One Hundred", "One Hundred Dollars", "100.jpg"),
-            new Denomination(50.0, "Fifty", "Fifty Dollars", "50.jpg"),
-            new Denomination(20.0, "Twenty", "Twenty Dollars", "20.jpg"),
-            new Denomination(10.0, "Ten", "Ten Dollars", "10.jpg"),
-            new Denomination(5.0, "Five", "Five Dollars", "5.jpg"),
-            new Denomination(1.0, "One", "One Peso", "1.jpg"),
-            new Denomination(0.25, "Twenty-Five", "Twenty-Five Cents", "25.jpg"),
-            new Denomination(0.10, "Ten", "Ten Cents", "10.jpg"),
-            new Denomination(0.05, "Five", "Five Cents", "5.jpg"),
-            new Denomination(0.01, "One", "One Cent", "1.jpg")
+            new Denomination(100.0, "One Hundred Dollar", "One Hundred Dollars", "100d.jpg"),
+            new Denomination(50.0, "Fifty Dollar", "Fifty Dollars", "50d.jpg"),
+            new Denomination(20.0, "Twenty Dollar", "Twenty Dollars", "20d.jpg"),
+            new Denomination(10.0, "Ten Dollar", "Ten Dollars", "10d.jpg"),
+            new Denomination(5.0, "Five Dollar", "Five Dollars", "5d.jpg"),
+            new Denomination(1.0, "One Dollar", "One Dollar", "1d.jpg"),
+            new Denomination(0.25, "Quarter", "Twenty-Five Cents", "25.jpg"),
+            new Denomination(0.10, "Dime", "Ten Cents", "10.jpg"),
+            new Denomination(0.05, "Nickel", "Five Cents", "5.jpg"),
+            new Denomination(0.01, "Penny", "One Cent", "1.jpg")
         };
         Purse temp = new Purse();
-        for (int i = 0; i < denoms.length && total > 0; i++) {
-            while (total >= denoms[i].amt()) {
+        for (int i = 0; i < denoms.length && totalCents > 0; i++) {
+            while (totalCents >= (int) (denoms[i].amt()*100)) {
                 temp.add(denoms[i], 1);
-                total -= denoms[i].amt();
+                totalCents -= (int) (denoms[i].amt()*100);
             }
         }
         return temp;
