@@ -1,14 +1,19 @@
+import java.awt.*;
 import javax.swing.*;
 
 public class MakingChange {
     public static void main(String[] args) {
-        JFrame window = new JFrame("Making Change");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setTitle("Making Change");
-        window.setSize(500, 500);
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
-        window.setResizable(true);
+        JFrame frame = new JFrame("Making Change");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(500, 900));
+        frame.pack();
+        frame.setLayout(new GridLayout(2, 1));
+
+        
+        frame.add(new RegisterPanel());
+        frame.add(new PursePanel());
+        frame.setVisible(true);
+
 
     }
 }
